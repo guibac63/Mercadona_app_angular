@@ -1,9 +1,13 @@
-const path = require("path");
-const express = require("express");
-const app = express();
-app.use(express.static(__dirname + "dist/mercadona_ui"));
+
+let express = require("express");
+
+let app = express();
+
+app.use(express.static(__dirname + "/dist/mercadona_ui"));
+
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "dist/mercadona_ui", "index.html"));
+  res.sendFile(__dirname + "/dist/mercadona_ui/index.html");
 });
+
 //Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 8080);
