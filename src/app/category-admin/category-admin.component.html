@@ -1,0 +1,16 @@
+<div class="header-height"></div>
+<nav aria-label="breadcrumb" class="ps-4 pt-4 bg-light cucumber ">
+  <ol class="breadcrumb cucumber">
+    <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Category</li>
+  </ol>
+</nav>
+<div class="container">
+  <button routerLink="/admin/category_admin/form" class="btn btn-success me-3 ">
+    <mat-icon class=" align-bottom me-1">note_add</mat-icon>Add Category
+  </button>
+  <button routerLink="/admin/" class="btn btn-warning">
+    <mat-icon class=" text-white">reply</mat-icon>
+  </button>
+  <app-show-category-details></app-show-category-details>
+</div>

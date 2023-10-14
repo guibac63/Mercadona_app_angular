@@ -1,0 +1,137 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Young+Serif&display=swap');
+
+
+.cucumber{
+  color:#00ab61 !important;
+}
+
+.cucumber-bg {
+  background-color: #00ab61 !important;
+}
+
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.header-content {
+  font-family: 'Lato', sans-serif;
+}
+
+.home-content {
+  font-family: 'Young Serif', Times, serif;
+}
+
+.links{
+  text-decoration: none;
+  color: white;
+}
+
+.sticky-content {
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.header-height {
+  height: 80px;
+}
+
+.footer-height {
+  height: 120px;
+}
+
+.home-height {
+  height: 1100px;
+}
+
+.home-picture-height {
+  height: 550px;
+  width: 100%;
+}
+
+.home-picture-style {
+  background-image: url(assets/images/vegetables-1085063.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.home-title-style {
+  backdrop-filter: blur(2px);
+}
+
+.app-style-relative {
+  position: relative;
+}
+
+.margin-top-login{
+  margin-top: 100px !important;
+}
+
+.max-width-login{
+  max-width: 375px;
+}
+
+.mat-icon-login {
+   transform: scale(2);
+}
+
+.bad-credentials-space {
+  height: 35px;;
+}
+
+.bad-credentials-height {
+  margin-bottom: 1px;
+  height: 16px;
+  line-height:6px;
+  padding:0px 16px;
+}
+
+.bg-main-theme {
+  background-color: #009688;
+}
+
+.form-title-size {
+  font-size: 1.2rem !important;
+}
+
+.btn-remove-image {
+  position: absolute;
+  cursor: pointer;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: auto;
+  text-align: center;
+}
+
+.filter-category {
+  top: 15px;
+  left: 20px;
+}
+
+ .hover-admin-card:hover {
+    border: 3px solid #00ab61;    
+}
+
+mat-grid-tile {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.product-card-image{
+  height: 45%;
+}
+
+.price-style{
+  text-decoration: line-through;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

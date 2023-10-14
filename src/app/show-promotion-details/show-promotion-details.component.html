@@ -1,0 +1,46 @@
+<table mat-table [dataSource]="promotionDetails" matSort class="mat-elevation-z8 mt-5">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="promotionName">
+    <th mat-header-cell *matHeaderCellDef> Promotion Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.promotionName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="beginningDate">
+    <th mat-header-cell *matHeaderCellDef> Beginning date </th>
+    <td mat-cell *matCellDef="let element"> {{element.beginningDate | date: "dd/MM/yyyy"}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="endingDate">
+    <th mat-header-cell *matHeaderCellDef> Ending date </th>
+    <td mat-cell *matCellDef="let element"> {{element.endingDate | date: "dd/MM/yyyy"}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="promotionPercentage">
+    <th mat-header-cell *matHeaderCellDef> Promotion Percentage </th>
+    <td mat-cell *matCellDef="let element"> {{element.promotionPercentage}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef> </th>
+    <td mat-cell *matCellDef="let element" class=" w-25">
+      <button mat-icon-button color="primary" class="me-3" (click)="editPromotion(element.id)"><mat-icon> edit </mat-icon></button>
+      <button mat-icon-button color="warn" (click)="deletePromotion(element.id)"><mat-icon> delete </mat-icon></button>   
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator 
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              showFirstLastButtons
+              aria-label="Select page"
+              >
+</mat-paginator>
+

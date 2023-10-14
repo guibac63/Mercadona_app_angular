@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light header-content sticky-content header-height">
+  <div class="container-fluid ms-3 me-3">
+    <a class="navbar-brand" href="#"
+      ><img
+        src="assets/icons/mercadona-logo.png"
+        width="190"
+        height="30"
+        alt="Mercadona-logo"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item ms-lg-5">
+          <a
+            class="nav-link cucumber float-end me-1 mt-2 me-lg-0 mt-lg-0"
+            aria-current="page"
+            routerLink=""
+            >Home</a
+          >
+        </li>
+        <li class="nav-item ms-lg-5">
+          <a routerLink="/all-our-products" class="nav-link cucumber float-end me-1 me-lg-0">Products</a>
+        </li>
+        <li *ngIf="isLoggedIn()" class="nav-item ms-lg-5">
+          <a
+            class="nav-link cucumber float-end me-1 me-lg-0"
+            routerLink="/admin"
+            >Panel Admin</a
+          >
+        </li>
+      </ul>
+      <button
+        *ngIf="!isLoggedIn()"
+        class="btn btn-success float-end mb-1"
+        routerLink="/login"
+        type="submit"
+      >
+        <mat-icon class="align-middle">account_circle</mat-icon>
+        <span class="ms-1">Login</span>
+      </button>
+      <button
+        (click)="logOut()"
+        *ngIf="isLoggedIn()"
+        class="btn btn-danger float-end mb-1"
+        type="submit"
+      >
+        <mat-icon class="align-middle">logout</mat-icon>
+        <span class="ms-1">Logout</span>
+      </button>
+    </div>
+  </div>
+</nav>

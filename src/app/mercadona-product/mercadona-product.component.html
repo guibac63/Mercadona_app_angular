@@ -1,0 +1,51 @@
+<div class="header-height"></div>
+<div class="header-height position-relative text-white">
+  <div class="position-absolute filter-category"></div>
+</div>
+<div class="container-fluid w-100 col-12">
+  <div class="container position-relative">
+    <div class="row w-100">
+      <form #categoryForm="ngForm" >
+        <mat-form-field class="bg-white" appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select
+            [(ngModel)]="product.category"
+            name="categories"
+            [compareWith]="compareWithCategory"
+            #productCategory="ngModel"
+            (selectionChange)="filterProducts($event)"
+          >
+            <mat-option [value]="0"> </mat-option>
+            <mat-option *ngFor="let category of categories" [value]="category" >
+              {{ category.categoryName }}
+            </mat-option>
+          </mat-select >
+        </mat-form-field>
+      </form>
+    </div>
+    <mat-grid-list #grid [cols]="cols" rowHeight="2:3" gutterSize="10">
+      <mat-grid-tile class=" shadow" *ngFor="let p of productsFiltered">
+        <div class="row position-relative h-100">
+          <img class="product-card-image " [src]="p.image.url" alt=""/>
+          <div class="m-3">
+            <b><h4 class="text-lg">{{p.productLibelle}}</h4></b>
+          </div>
+          <div class="m-3">
+            <p>{{p.productDescription}}</p>
+          </div>
+          <div class="m-3">
+            <p>Prix : <span [ngClass]="{'price-style' : p.isPromotionValid}" class=" fw-bold text-lg ms-1">{{p.productPrice}} €</span> <span *ngIf="p.isPromotionValid" class="ms-3 text-lg fw-bold text-danger">{{p.productDiscountedPrice}} €</span></p>
+            
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <!-- <mat-paginator
+        #paginator
+        [pageSize]="10"
+        showFirstLastButtons
+        aria-label="Select page"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+      ></mat-paginator> -->
+  </div>
+</div>

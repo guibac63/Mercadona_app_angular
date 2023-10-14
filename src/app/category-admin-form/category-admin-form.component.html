@@ -1,0 +1,64 @@
+<div class="header-height"></div>
+<nav aria-label="breadcrumb" class="ps-4 pt-4 bg-light cucumber">
+  <ol class="breadcrumb cucumber">
+    <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+    <li class="breadcrumb-item">
+      <a routerLink="/admin/category_admin">Category</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Add Category</li>
+  </ol>
+</nav>
+<div class="container mt-5 col-lg-4">
+  <mat-card class="shadow">
+    <mat-card-header class="mb-3 bg-main-theme">
+      <mat-card-title class="text-white pb-3 form-title-size fw-light ">Category</mat-card-title>
+    </mat-card-header>
+    <mat-card-content><form #categoryForm="ngForm" (ngSubmit)="categoryForm.form.valid && addCategory(categoryForm)">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Category name</mat-label>
+          <input
+            matInput
+            placeholder="Category name"
+            [(ngModel)]="category.categoryName"
+            type="text"
+            name="categoryName"
+            required
+            minlength="2"
+            #categoryName="ngModel"
+            (click)="resetNoExistErrors()"
+          />
+          <mat-error *ngIf="categoryName.errors?.['required']">Category name is required</mat-error>
+          <mat-error *ngIf="categoryName.errors?.['minlength']">Category name must be at least 2 characters long.</mat-error>
+        </mat-form-field>
+        <div class="bad-credentials-height d-flex justify-content-center">
+          <div class="alert alert-danger bad-credentials-height w-100 text text-center" role="alert" *ngIf="alreadyExistCategoryError">This category already exists</div>
+        </div>
+        <div class="mt-4">
+          <div class="float-end">
+            <button mat-raised-button color="primary" class="me-3" routerLink="/admin/category_admin">
+              <span class="material-icons"> backspace </span>
+            </button>
+            <button
+              type="submit"
+              mat-raised-button
+              color="primary"
+              *ngIf="!category.id"
+              [disabled]="categoryForm.form.status==='INVALID'"
+            >
+              Add Category
+            </button>
+            <button
+              type="submit"
+              mat-raised-button
+              color="primary"
+              *ngIf="category.id"
+              [disabled]="categoryForm.form.status==='INVALID'"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

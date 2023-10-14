@@ -1,0 +1,52 @@
+<div class="cucumber-bg h-100">
+  <div class="container mt-5 d-flex max-width-login justify-content-center align-items-center h-100  cucumber-bg">
+    <div class="card p-4 w-75 max-width-login margin-top-login shadow-lg border-1 border-light">
+      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+        <div class="d-flex flex-column justify-content-center">
+          <div
+            class="d-flex justify-content-center flex-column align-items-center"
+          >
+            <img
+              src="assets/icons/mercadona-logo.png"
+              width="190"
+              height="30"
+              alt="Mercadona-logo"
+            />
+            <mat-icon class="cucumber mat-icon-login mt-3"
+              >account_circle</mat-icon
+            >
+          </div>
+          <label for="username" class="me-2 ps-1 cucumber mt-4">Login</label>
+          <input
+            class="mb-2"
+            type="text"
+            [(ngModel)]="username"
+            name="username"
+            id="username"
+            class="form-control"
+          />
+          <label for="name" class="me-2 mt-2 ps-1 cucumber">Password</label>
+          <input
+            class="mb-2"
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            id="password"
+            class="form-control"
+          />
+          <input
+            type="submit"
+            class="btn btn-success mt-3 form-control"
+            value="Submit"
+          />
+          <div class="bad-credentials-space">
+            <div *ngIf="badCredentials" class="alert alert-danger bad-credentials-height text-center mt-2" role="alert">
+              Invalid credentials
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

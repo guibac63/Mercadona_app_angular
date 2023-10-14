@@ -1,0 +1,52 @@
+<table mat-table [dataSource]="productDetails" matSort class="mat-elevation-z8 mt-5">
+
+  <ng-container matColumnDef="id" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="productLibelle">
+    <th mat-header-cell *matHeaderCellDef> Product Libelle </th>
+    <td mat-cell *matCellDef="let element"> {{element.productLibelle}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef> Category </th>
+    <td mat-cell *matCellDef="let element"> {{element.category.categoryName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="productPrice">
+    <th mat-header-cell *matHeaderCellDef> Product price </th>
+    <td mat-cell *matCellDef="let element"> {{element.productPrice}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="promotion">
+    <th mat-header-cell *matHeaderCellDef> Promotion </th>
+    <td mat-cell *matCellDef="let element"> {{element.promotion?.promotionName || ''}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="productDiscountedPrice">
+    <th mat-header-cell *matHeaderCellDef> Product discounted price </th>
+    <td mat-cell *matCellDef="let element"> {{element.productDiscountedPrice || ''}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef> </th>
+    <td mat-cell *matCellDef="let element" class=" w-25">
+      <button mat-icon-button color="primary" class="me-3" (click)="editProduct(element.id)"><mat-icon> edit </mat-icon></button>
+      <button mat-icon-button color="warn" (click)="deleteProduct(element.id)"><mat-icon> delete </mat-icon></button>   
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator 
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              showFirstLastButtons
+              aria-label="Select page"
+              >
+</mat-paginator>
+
+
