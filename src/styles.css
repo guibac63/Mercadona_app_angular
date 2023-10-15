@@ -132,6 +132,18 @@ mat-grid-tile {
   text-decoration: line-through;
 }
 
+.product-desc-text-size{
+  font-size: 0.88rem;
+  text-align: justify;
+  height:85px !important;
+  max-height: 85px !important;
+  overflow: auto;
+}
+
+.file-error-text-size{
+  font-size: 0.80rem;
+}
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

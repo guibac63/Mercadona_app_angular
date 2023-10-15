@@ -44,11 +44,13 @@
                 name="productDescription"
                 #productDescription="ngModel"
                 minlength="10"
+                maxlength="200"
                 required
                 type="text"
               ></textarea>
               <mat-error *ngIf="productDescription.errors?.['required']">Product description is required</mat-error>
               <mat-error *ngIf="productDescription.errors?.['minlength']">Product description must be at least 10 characters long.</mat-error> 
+              <mat-error *ngIf="productDescription.errors?.['maxlength']">Product description must be at maximum 200 characters long.</mat-error>
             </mat-form-field>
             <div class="mt-2"></div>
             <mat-form-field class="w-100" appearance="outline">
@@ -123,15 +125,16 @@
               #select
               (change)="onFileSelected($event)"            
             />
-            <mat-error *ngIf="!product.image">Image is required</mat-error>
+            <mat-error *ngIf="!product.image">Image is required (Max size: 128 ko)</mat-error>
             <div *ngIf="product.image" class="my-2 mx-5">
               <div class="row">
-                    <div style="position: relative;">
-                      <!-- <span (click)="removeImage()" class="btn-remove-image">X</span> -->
-                      <img [src]="product.image.url" width="100%" alt="" >
-                    </div>
+                <div style="position: relative;">
+                  <!-- <span (click)="removeImage()" class="btn-remove-image">X</span> -->
+                  <img [src]="product.image.url" width="100%" alt="" >
+                </div>
               </div>
             </div>
+            <div class="alert alert-danger bad-credentials-height w-100 text text-center file-error-text-size" role="alert" *ngIf="fileSizeError">the size of the image exceeds the maximum allowable value</div>
           </div>
         </div>
 
@@ -145,7 +148,7 @@
               mat-raised-button
               color="primary"
               *ngIf="!product.id"
-              [disabled]="productForm.form.status==='INVALID' || !product.image"
+              [disabled]="productForm.form.status==='INVALID' || !product.image || fileSizeError"
             >
               Add Product
             </button>
@@ -154,7 +157,7 @@
               mat-raised-button
               color="primary"
               *ngIf="product.id"
-              [disabled]="productForm.form.status==='INVALID' || !product.image"
+              [disabled]="productForm.form.status==='INVALID' || !product.image || fileSizeError"
             >
               Update
             </button>

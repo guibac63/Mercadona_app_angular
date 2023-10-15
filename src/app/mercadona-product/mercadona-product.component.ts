@@ -5,8 +5,8 @@ import { Product } from '../_model/product.model';
 import { ActivatedRoute } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MercadonaProduct } from '../_model/mercadonaProduct.model';
-import { MatPaginator } from '@angular/material/paginator';
-import { Observable } from 'rxjs';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-mercadona-product',
@@ -15,6 +15,10 @@ import { Observable } from 'rxjs';
 })
 export class MercadonaProductComponent {
   @ViewChild('paginator') paginator: MatPaginator;
+
+  currentPage = 0;
+
+  pageSize = 6;
 
   products: any[];
 
@@ -31,14 +35,16 @@ export class MercadonaProductComponent {
 
   productsFiltered: MercadonaProduct[];
 
+  productsFilteredforPagination: MercadonaProduct[];
+
   categories: Category[];
 
   cols: number;
 
   gridByBreakpoint = {
-    xl: 4,
-    lg: 4,
-    md: 3,
+    xl: 3,
+    lg: 3,
+    md: 2,
     sm: 2,
     xs: 1,
   };
@@ -81,6 +87,8 @@ export class MercadonaProductComponent {
     this.actRoute.data.subscribe((data) => {
       this.products = data.routeAllProductsResolver;
       this.productsFiltered = this.checkPromotionValidity(this.products);
+      this.productsFilteredforPagination = this.productsFiltered;
+      this.updateProducts();
     });
     this.getAllCategories();
   }
@@ -107,8 +115,12 @@ export class MercadonaProductComponent {
           return product.category.id === evt.value.id;
         })
       );
+       this.productsFilteredforPagination = this.productsFiltered;
+       this.onChangeCategoryForPagination()
     } else {
       this.productsFiltered = this.checkPromotionValidity(this.products);
+      this.productsFilteredforPagination = this.productsFiltered
+      this.onChangeCategoryForPagination()
     }
   }
 
@@ -129,5 +141,26 @@ export class MercadonaProductComponent {
     });
 
     return productsFiltered;
+  }
+
+  onPageChange(event: PageEvent) {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.updateProducts();
+  }
+
+  onChangeCategoryForPagination() {
+    this.currentPage = 0;
+    this.pageSize = 3;
+    this.updateProducts();
+  }
+
+  updateProducts() {
+    const startIndex = this.currentPage * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.productsFiltered = this.productsFilteredforPagination.slice(
+      startIndex,
+      endIndex
+    );
   }
 }

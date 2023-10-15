@@ -23,29 +23,27 @@
         </mat-form-field>
       </form>
     </div>
-    <mat-grid-list #grid [cols]="cols" rowHeight="2:3" gutterSize="10">
+    <mat-grid-list #grid [cols]="cols" rowHeight="4:5" gutterSize="15">
       <mat-grid-tile class=" shadow" *ngFor="let p of productsFiltered">
-        <div class="row position-relative h-100">
-          <img class="product-card-image " [src]="p.image.url" alt=""/>
-          <div class="m-3">
-            <b><h4 class="text-lg">{{p.productLibelle}}</h4></b>
+        <div class="row position-relative h-100 w-100">
+          <img class="product-card-image px-0" [src]="p.image.url" alt=""/>
+          <div class=""><h4 class="text-lg">{{p.productLibelle}}</h4></div>
+          <div class="">
+            <p class=" text-sm product-desc-text-size ">{{p.productDescription}}</p>
           </div>
-          <div class="m-3">
-            <p>{{p.productDescription}}</p>
-          </div>
-          <div class="m-3">
+          <div >
             <p>Prix : <span [ngClass]="{'price-style' : p.isPromotionValid}" class=" fw-bold text-lg ms-1">{{p.productPrice}} €</span> <span *ngIf="p.isPromotionValid" class="ms-3 text-lg fw-bold text-danger">{{p.productDiscountedPrice}} €</span></p>
             
           </div>
         </div>
       </mat-grid-tile>
     </mat-grid-list>
-    <!-- <mat-paginator
+    <mat-paginator
         #paginator
-        [pageSize]="10"
-        showFirstLastButtons
-        aria-label="Select page"
+        [pageSize]="pageSize"
+        [length]="productsFilteredforPagination.length"
         [pageSizeOptions]="[5, 10, 25, 100]"
-      ></mat-paginator> -->
+        (page)="onPageChange($event)"
+      ></mat-paginator>
   </div>
 </div>

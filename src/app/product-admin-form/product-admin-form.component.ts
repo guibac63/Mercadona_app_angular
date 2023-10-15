@@ -35,6 +35,8 @@ export class ProductAdminFormComponent {
 
   selectedPromotion: Promotion[];
 
+  fileSizeError: boolean = false
+
   constructor(
     private productService: ProductService,
     private categoryService: CategoryService,
@@ -90,6 +92,10 @@ export class ProductAdminFormComponent {
   onFileSelected(evt) {
     if (evt.target.files) {
       const file = evt.target.files[0];
+      
+      file.size > 127900 ? this.fileSizeError = true: this.fileSizeError = false
+          
+      console.log(file)
 
       const fileHandle: FileHandle = {
         file: file,
