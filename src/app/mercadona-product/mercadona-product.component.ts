@@ -18,7 +18,7 @@ export class MercadonaProductComponent {
 
   currentPage = 0;
 
-  pageSize = 6;
+  pageSize = 3;
 
   products: any[];
 
@@ -150,9 +150,11 @@ export class MercadonaProductComponent {
   }
 
   onChangeCategoryForPagination() {
-    this.currentPage = 0;
     this.pageSize = 3;
+    this.currentPage = 0;
     this.updateProducts();
+    this.paginator.firstPage();
+
   }
 
   updateProducts() {
