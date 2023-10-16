@@ -131,15 +131,14 @@ export class MercadonaProductComponent {
       let now = Date.now();
       if (
         product.promotion &&
-        Date.parse(product.promotion.beginningDate) <= now &&
-        Date.parse(product.promotion.endingDate) >= now
+        product.promotion.beginningDate <= now &&
+        product.promotion.endingDate >= now
       ) {
         product.isPromotionValid = true;
       } else {
         product.isPromotionValid = false;
       }
     });
-
     return productsFiltered;
   }
 
