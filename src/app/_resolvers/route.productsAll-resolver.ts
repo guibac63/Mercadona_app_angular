@@ -19,7 +19,6 @@ export const RouteAllProductsResolver: ResolveFn<any> = (
   return productService.getAllProducts().pipe(
     map((data)=> {
       const products = data.data;
-      console.log(products)
       const transformedProducts = products.map((product) => {
         imageService.createImages(product)
         return product;

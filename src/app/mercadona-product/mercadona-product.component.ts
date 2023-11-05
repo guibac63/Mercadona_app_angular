@@ -91,7 +91,6 @@ export class MercadonaProductComponent {
       this.updateProducts();
     });
     this.getAllCategories();
-    console.log(this.products)
   }
 
   compareWithCategory(object1: Category, object2: Category) {

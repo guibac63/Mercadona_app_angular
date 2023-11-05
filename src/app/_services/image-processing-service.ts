@@ -12,8 +12,6 @@ export class ImageProcessingService {
 
   public createImages(product:any) {
     
-    console.log(product)
-
     const productImage: any = product.image;
 
     const finalFileHandle: FileHandle = {
