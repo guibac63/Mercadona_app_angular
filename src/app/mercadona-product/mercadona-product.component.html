@@ -26,7 +26,7 @@
     <mat-grid-list #grid [cols]="cols" rowHeight="4:5" gutterSize="15">
       <mat-grid-tile class=" shadow" *ngFor="let p of productsFiltered">
         <div class="row position-relative h-100 w-100">
-          <img class="product-card-image px-0" [src]="p.image.url" alt=""/>
+          <img class="product-card-image px-0" [src]="p.image.image_url" alt=""/>
           <div class=""><h4 class="text-lg">{{p.productLibelle}}</h4></div>
           <div class="">
             <p class=" text-sm product-desc-text-size ">{{p.productDescription}}</p>

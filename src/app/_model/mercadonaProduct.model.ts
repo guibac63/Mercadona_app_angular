@@ -10,6 +10,6 @@ export interface MercadonaProduct {
   productDiscountedPrice: number;
   category: Category;
   promotion: Promotion;
-  image: FileHandle;
+  image: string;
   isPromotionValid: boolean
 }

@@ -95,13 +95,12 @@ export class ProductAdminFormComponent {
       
       file.size > 127900 ? this.fileSizeError = true: this.fileSizeError = false
           
-      console.log(file)
-
       const fileHandle: FileHandle = {
         file: file,
         url: this.sanitizer.bypassSecurityTrustUrl(
           window.URL.createObjectURL(file)
         ),
+        image_url:null
       };
       this.product.image = fileHandle;
     }
